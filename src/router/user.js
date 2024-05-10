@@ -173,9 +173,9 @@ router.delete('/users/me/avtar', auth, async (req, res) => {
 })
 // const path = require('path');
 //competele this code can not get avtar as pic
-router.get('/users/:id/avtar', async (req, res) => {
+router.get('/users/avtar', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.params.id)
+        const user = await User.findById(req.user._id)
         if (!user || !user.avtar) {
             throw new Error()
         }
